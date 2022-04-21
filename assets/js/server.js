@@ -22,6 +22,10 @@ app.get('/', (request, response) => {
 });
 
 app.get('/items', db.getMenuItems);
+app.get('/items/:id', db.getMenuItem);
+app.post('/items', db.createMenuItem);
+app.put('/items/:id', db.updateMenuItem);
+app.delete('/items/:id', db.deleteMenuItem);
 
 
 app.listen(port, () => {
