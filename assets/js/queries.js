@@ -9,14 +9,13 @@ const pool = new Pool({
 });
 
 const getMenuItems = (request, response) => {
-    pool.query('SELECT * FROM it353project.menu_items', (error, results) => {
-      if (error) {
-        throw error;
-      }
-      response.status(200).json(results.rows);
-    });
-  };
-  
+  pool.query('SELECT * FROM it353project.menu_items', (error, results) => {
+    if (error) {
+      throw error;
+    }
+    response.status(200).json(results.rows);
+  });
+};
 
   const getMenuItem = (request, response) => {
     const id = parseInt(request.params.id);
@@ -80,10 +79,103 @@ const getMenuItems = (request, response) => {
     });
   };
 
+
+  const getOrders = (request, response) => {
+    pool.query('SELECT * FROM it353project.orders', (error, results) => {
+      if (error) {
+        throw error;
+      }
+      response.status(200).json(results.rows);
+    });
+  };
+
+  const getOrder = (request, response) => {
+    const oid = parseInt(request.params.oid);
+    const iid = parseInt(request.params.iid);
+    pool.query(
+      'SELECT * FROM it353project.orders WHERE order_id= $1 AND item_id = $2',
+      [oid, iid],
+      (error, results) => {
+        if (error) {
+          throw error;
+        }
+        response.status(200).json(results.rows);
+      }
+    );
+  };
+
+
+  const createOrder = (request, response) => {
+    const { order_id, item_id, quant } = request.body;
+    console.log(order_id, item_id, quant);
+  
+    pool.query(
+      'INSERT INTO it353project.orders (order_id, item_id, quant) VALUES ($1, $2, $3)',
+      [order_id, item_id, quant],
+      (error, results) => {
+        if (error) {
+          throw error;
+        }
+        response.status(201).send(`Order added`);
+      }
+    );
+  };
+
+
+  const updateOrderItem = (request, response) => {
+    console.log('hits');
+    const oid = parseInt(request.params.oid);
+    const iid = parseInt(request.params.iid);
+    const { quant } = request.body;
+    // console.log(request);
+
+    pool.query(
+      'UPDATE it353project.orders SET quant = $1 WHERE order_id = $2 AND item_id = $3',
+      [quant, oid, iid],
+      (error, results) => {
+        if (error) {
+          throw error;
+        }
+        response.status(200).send(`Menu item modified with OID = ${oid} and IID = ${iid}`);
+      }
+    );
+  };
+
+  const deleteEntireOrder = (request, response) => {
+    const oid = parseInt(request.params.oid);
+    console.log(oid);
+  
+    pool.query('DELETE FROM it353project.orders WHERE order_id= $1', [oid], (error, results) => {
+      if (error) {
+        throw error;
+      }
+      response.status(200).send(`Order ID ${oid} Deleted`);
+    });
+  };
+
+  const deleteOrderItem = (request, response) => {
+    const oid = parseInt(request.params.oid);
+    const iid = parseInt(request.params.iid);
+    console.log(`${oid} ${iid}`);
+  
+    pool.query('DELETE FROM it353project.orders WHERE order_id = $1 and item_id = $2', [oid, iid], (error, results) => {
+      if (error) {
+        throw error;
+      }
+      response.status(200).send(`Order Item Deleted`);
+    });
+  };
+
 module.exports = {
     getMenuItems,
     getMenuItem,
     createMenuItem,
     updateMenuItem,
-    deleteMenuItem
+    deleteMenuItem,
+    getOrders,
+    getOrder,
+    createOrder,
+    updateOrderItem,
+    deleteEntireOrder,
+    deleteOrderItem
 }

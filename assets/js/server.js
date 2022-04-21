@@ -27,6 +27,12 @@ app.post('/items', db.createMenuItem);
 app.put('/items/:id', db.updateMenuItem);
 app.delete('/items/:id', db.deleteMenuItem);
 
+app.get('/orders', db.getOrders);
+app.get('/orders/:oid/:iid', db.getOrder);
+app.post('/orders', db.createOrder);
+app.put('/orders/:oid/:iid', db.updateOrderItem);
+app.delete('/orders/:oid', db.deleteEntireOrder);
+app.delete('/orders/:oid/:iid', db.deleteOrderItem);
 
 app.listen(port, () => {
   console.log(`App running on port ${port}.`);
