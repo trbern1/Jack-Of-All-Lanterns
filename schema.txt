@@ -1,0 +1,67 @@
+
+-- Table: it353project.orders
+
+DROP TABLE IF EXISTS it353project.orders;
+
+CREATE TABLE IF NOT EXISTS it353project.orders
+(
+    order_id integer NOT NULL,
+    item_id integer NOT NULL,
+    quant integer,
+    CONSTRAINT orders_pkey PRIMARY KEY (order_id, item_id)
+)
+
+TABLESPACE pg_default;
+
+ALTER TABLE IF EXISTS it353project.orders
+    OWNER to it353;
+	
+-- Table: it353project.menu_items
+
+DROP TABLE IF EXISTS it353project.menu_items;
+
+CREATE TABLE IF NOT EXISTS it353project.menu_items
+(
+    id integer NOT NULL,
+    name character varying COLLATE pg_catalog."default",
+    price double precision,
+    CONSTRAINT menu_items_pkey PRIMARY KEY (id)
+)
+
+TABLESPACE pg_default;
+
+ALTER TABLE IF EXISTS it353project.menu_items
+    OWNER to it353;
+
+INSERT INTO it353project.menu_items(
+	id, name, price)
+	VALUES (1, 'Pumpkin Scones', 6.99);
+
+INSERT INTO it353project.menu_items(
+	id, name, price)
+	VALUES (2, 'Pumpkin Cake Roll', 7.99);
+
+INSERT INTO it353project.menu_items(
+	id, name, price)
+	VALUES (3, 'Pumpkin Bread', 5.99);
+
+INSERT INTO it353project.menu_items(
+	id, name, price)
+	VALUES (4, 'Pumpkin Cheesecake', 8.99);
+	
+INSERT INTO it353project.menu_items(
+	id, name, price)
+	VALUES (5, 'Pumpkin Chocolate Chip Cookies', 5.99);
+	
+INSERT INTO it353project.menu_items(
+	id, name, price)
+	VALUES (6, 'Pumpkin Muffin', 4.99);
+	
+INSERT INTO it353project.menu_items(
+	id, name, price)
+	VALUES (7, 'Pumpkin Spice Bagels', 5.99);
+
+INSERT INTO it353project.menu_items(
+	id, name, price)
+	VALUES (8, 'Traditional Pumpkin Pie', 8.99);
+	
