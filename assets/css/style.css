@@ -7,13 +7,23 @@
 }
 
 #hero{
-    margin: 20px;
+    margin-bottom: 10px;
 }
 
-#left-card{
-    margin-left: 20px;
+.card{
+    background-color: #EFBF38;
 }
 
-#right-card{
-    margin-right: 20px;
+#navigation{
+background-color: #EFBF38 !important;
+margin-bottom: 10px;
+}
+
+body{
+    background-color: #763A12;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+#footer{
+    background-color: #EFBF38 !important;
 }
