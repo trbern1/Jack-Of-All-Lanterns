@@ -9,22 +9,21 @@ $(document).ready(function() {
     }
     
     function checkOrderID(key) {
-        var check = true;
-        // compare the key to the already made set of keys
-        $.get('/orderids', function(data, status) {
-            console.log(status)
-            console.log(data)
-            // this needs to change to getting orderids from the table set
-            for(const fake of fakeKeys) {
-                if(key == fake) {
-                    check = false;
-                    break;
-                } 
-            }
-        }).fail(function() {
-            console.error("Error while getting menu items")
-        })
-        
+        var check = false;
+        if(Number.isInteger(key)) {
+            // compare the key to the already made set of keys
+            $.get(`/order/${key}`, function(data, status) {
+                console.error('key is already in the database');
+                check = false;
+            }).fail(function() {
+                // continue with process because key is unique
+                console.error("Error while getting menu items")
+                check = true;
+            })
+            
+            return check;
+
+        }
         return check;
     }
     
