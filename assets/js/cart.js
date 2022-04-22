@@ -26,5 +26,30 @@ $(document).ready(function() {
     $("#makeOrder").click(function(e) {
         e.preventDefault();
         alert('order placed');
+        const orderIDPromise = createOrderID();
+        orderIDPromise.then((json) => console.log('promise ended: ', json))
     })
+
+    const MAX = 100000
+    async function createOrderID() {
+        var key = Math.floor(Math.random() * MAX);
+        var present = await checkOrderIDTesting(key);
+        while(present) { key = Math.floor(Math.random() * MAX); present = await checkOrderID(key)}
+        return key;
+    }
+    
+    async function checkOrderIDTesting(key) {
+        try {
+            console.log(key)
+            const response = await fetch(`127.0.0.1:5501/order/${key}`);
+            if(!response.ok) {
+                alert('key is not in database')
+            }
+            const json = await response.json();
+            console.log(key);
+        } catch (error) {
+            console.log('key is free')
+        }
+    }
+
 })
