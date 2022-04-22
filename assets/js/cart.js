@@ -33,19 +33,20 @@ $(document).ready(function() {
     const MAX = 100000
     async function createOrderID() {
         var key = Math.floor(Math.random() * MAX);
-        var present = await checkOrderIDTesting(key);
+        var present = await checkOrderID(key);
         while(present) { key = Math.floor(Math.random() * MAX); present = await checkOrderID(key)}
         return key;
     }
     
-    async function checkOrderIDTesting(key) {
+    async function checkOrderID(key) {
         try {
             console.log(key)
-            const response = await fetch(`127.0.0.1:5501/order/${key}`);
+            const response = await fetch(`http://127.0.0.1:3000/order/${key}`);
             if(!response.ok) {
                 alert('key is not in database')
             }
             const json = await response.json();
+            console.log(json)
             console.log(key);
         } catch (error) {
             console.log('key is free')
