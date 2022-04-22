@@ -111,9 +111,9 @@ const getMenuItems = (request, response) => {
       [oid],
       (err, results) => {
         if(error) {
-          throw error;
+          response.send({ present: false });
         }
-        response.status(200).json(results.rows);
+        response.send({ present: true});
       }
     )
   }
