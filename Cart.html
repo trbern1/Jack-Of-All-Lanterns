@@ -40,40 +40,74 @@
             </form>
           </div>
         </div>
+    </nav>
+    <div class="container">
+        <div class="row justify-content-around">
+            <div class="col-md-7 overflow-auto border border-dark container">
+                <div class="row">
+                    <div class="col-2">
+                        <img src="assets/images/PumpkinLogo.png" alt="Image of item" width="80%" />
+                    </div>
+                    <div class="col-6">
+                        <h4>Name of Item</h4>
+                    </div>
+                    <div class="col-2">
+                        <p>quantity incremental</p>
+                    </div>
+                    <div class="col-2">
+                        <h4>[PRICE]</h4>
+                    </div>
+                </div>
+            </div>
+            <div class="gap-4 col-md-4 offset-md-1">
+                <table class="table table-borderless">
+                    <tbody>
+                        <tr>
+                            <td colspan="2" class="table-active"><strong>Subtotal</strong></td>
+                            <td id="subtotal">[price]</td>
+                        </tr>
+                        <tr>
+                            <td colspan="2" class="table-active">Delivery Fee</td>
+                            <td>[price]</td>
+                        </tr>
+                      <tr>
+                        <td colspan="2" class="table-active">Estimated Tax</td>
+                        <td>[price]</td>
+                      </tr>
+                    </tbody>
+                </table>
+                <hr>
+                <h2>TOTAL:</h2>
+                <button type="button" id="makeOrder" class="btn btn-outline-success">Make Order</button>
+            </div>
+        </div>
+        
+    </div>
+    <nav id="footer" class="navbar navbar-expand-lg navbar-light bg-light">
+        <div class="container-fluid">
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+              <li class="nav-item">
+                <a class="nav-link active" aria-current="page" href="#">Home</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="#">Menu</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="#">About Us</a>
+              </li>
+            </ul>
+            <form class="d-flex">
+              <a class="nav-link" href="#" id="checkout">Checkout</a>
+              <!--<input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+              <button class="btn btn-outline-secondary" type="submit">Search</button>-->
+            </form>
+          </div>
+        </div>
       </nav>
-      <div class="container-fluid">
-        <div class="row">
-            <div class="col-fluid">
-                <p>hello</p>
-                <p>world</p>
-            </div>
-        </div>
-        <div class="row">
-            <div class="col-md-4">
-                <p>hello</p>
-                <p>world</p>
-            </div>
-            <div class="col-md-4">
-                <p>hello</p>
-                <p>world</p>
-            </div>
-            <div class="col-md-4">
-                <p>hello</p>
-                <p>world</p>
-            </div>
-        </div>
-    </div>
-
-    <div id = "totals">
-        Subtotal: 
-        Tax:
-        Deilvery fee:
-        Total due:
-        <button id = "checkout"> Checkout</button>
-    </div>
-    <div id = "items">
-
-    </div>
-    
+    <script src="assets/js/cart.js"></script>
 </body>
 </html>

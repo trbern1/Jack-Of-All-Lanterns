@@ -1,27 +1,34 @@
 $(document).ready(function() {
-
-    function getMenuItems() {
-        const menuItemUrl = ''
-        $.get(menuItemUrl, function(data, status) {
-            alert("Data: " + data + "\nStatus: " + status);
+    
+    const fakeKeys = [0,1,2,3,4];
+    const MAX = 10
+    function createOrderID() {
+        var key = Math.floor(Math.random() * MAX);
+        while(!checkOrderID(key)) { key = Math.floor(Math.random() * MAX); }
+        return key;
+    }
+    
+    function checkOrderID(key) {
+        var check = true;
+        // compare the key to the already made set of keys
+        $.get('/orderids', function(data, status) {
+            console.log(status)
+            console.log(data)
+            // this needs to change to getting orderids from the table set
+            for(const fake of fakeKeys) {
+                if(key == fake) {
+                    check = false;
+                    break;
+                } 
+            }
         }).fail(function() {
             console.error("Error while getting menu items")
         })
+        
+        return check;
     }
     
-    function createOrder() {
-        const createOrderUrl = ''
-        // test data
-        var order = {
-            order_id: sessionStorage.getItem('orderID'),
-            item_id: sessionStorage.getItem('itemID'),
-            quant: sessionStorage.getItem('quantity')
-        }
-        $.post(createOrderUrl, order, function(data, status) {
-            alert("Post")
-        }).fail(function() {
-            alert('error in post request')
-        })
-    }
-
+    
+    // set orderID for customer on page load
+    sessionStorage.setItem('orderID', createOrderID())
 })
