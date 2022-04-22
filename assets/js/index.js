@@ -1,5 +1,4 @@
 $(document).ready(function() {
-    
     const fakeKeys = [0,1,2,3,4];
     const MAX = 10
     async function createOrderID() {
