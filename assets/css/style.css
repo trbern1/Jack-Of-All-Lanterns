@@ -48,10 +48,6 @@ body{
     color: black;
 }
 
-#menuimg{
-    height: 250px;
-}
-
 @media only screen and (min-width: 580px) {
 #hero-title{
     font-size: 50px !important;
