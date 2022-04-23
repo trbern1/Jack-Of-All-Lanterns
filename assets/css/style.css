@@ -28,3 +28,13 @@ body{
     background-color: #EFBF38 !important;
     margin-top: 1%;
 }
+
+@media only screen and (min-width: 500px) {
+
+.card-img-top {
+    width: 100%;
+    height: 15vw;
+    object-fit: cover;
+}
+}
+
