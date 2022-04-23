@@ -1,5 +1,28 @@
 $(document).ready(function() {
 
+    // On refresh click, makes the blocks appear 
+    // for each item present in session storage
+    checkoutButton = document.getElementById('refresh')
+    checkoutButton.addEventListener('click', () => {
+        try {
+            let itemquants = [sessionStorage.getItem("item1"),
+                sessionStorage.getItem("item2"),sessionStorage.getItem("item3"),
+                sessionStorage.getItem("item4"),sessionStorage.getItem("item5"),
+                sessionStorage.getItem("item6"),sessionStorage.getItem("item7"),
+                sessionStorage.getItem("item8")];
+            // console.log(itemquants);
+            for (var i=1; i<itemquants.length+1; i++){
+                if (itemquants[i-1] != null){
+                    let itemidname = "item" + i + "-cart";
+                    // console.log(itemidname);
+                    document.getElementById(itemidname).style.display= "block";
+                }
+            }
+        }catch (error) {
+            console.log(error);
+        }
+    });
+
     function setQuantity() {
         // retrieve quantity from cart
         var quantity = 1;
