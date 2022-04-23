@@ -48,12 +48,17 @@ body{
     color: black;
 }
 
+<<<<<<< HEAD
 .cart-items {
     display: none;
 }
 
 .btn-menu-crud {
     display: none;
+=======
+#menuimg{
+    height: 250px;
+>>>>>>> 335be78ab15cd68569a24f49d967e002a4221771
 }
 
 @media only screen and (min-width: 580px) {
