@@ -41,3 +41,11 @@ body{
 .cart-items {
     display: none;
 }
+
+.btn-menu-crud {
+    display: none;
+}
+
+.hide {
+    display: none;
+}
