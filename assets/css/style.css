@@ -48,6 +48,14 @@ body{
     color: black;
 }
 
+.cart-items {
+    display: none;
+}
+
+.btn-menu-crud {
+    display: none;
+}
+
 @media only screen and (min-width: 580px) {
 #hero-title{
     font-size: 50px !important;
