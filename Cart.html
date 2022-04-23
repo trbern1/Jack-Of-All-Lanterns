@@ -13,43 +13,94 @@
     <link rel="stylesheet" href="assets/css/style.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
     <title>Cart</title>
+    <link rel="icon" type="image/x-icon" href="/assets/images/PumpkinLogo.png">
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3"
+      crossorigin="anonymous"
+    />
+    <link rel="stylesheet" href="assets/css/style.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 </head>
 <body>
     <nav id=navigation class="navbar navbar-expand-lg navbar-light bg-light">
         <div class="container-fluid">
-          <a class="navbar-brand" href="./index.html"><img src="./assets/images/PumpkinLogo.png" id="logo" alt="" width="24" height="24" class="d-inline-block align-text-top">Jack of All Lanterns</a>
+          <a class="navbar-brand" href="index.html"><img src="./assets/images/PumpkinLogo.png" id="logo" alt="" width="24" height="24" class="d-inline-block align-text-top">Jack of All Lanterns</a>
           <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
           </button>
           <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav me-auto mb-2 mb-lg-0">
               <li class="nav-item">
-                <a class="nav-link active" aria-current="page" href="./index.html">Home</a>
+                <a class="nav-link active" aria-current="page" href="#">Home</a>
               </li>
               <li class="nav-item">
-                <a class="nav-link" href="./menu.html">Menu</a>
+                <a class="nav-link" href="menu.html">Menu</a>
               </li>
               <li class="nav-item">
-                <a class="nav-link" href="./aboutus.html">About Us</a>
+                <a class="nav-link" href="aboutus.html">About Us</a>
               </li>
             </ul>
             <form class="d-flex">
-              <a class="nav-link" href="./Cart.html" id="checkout"><img src="./assets/images/Cart.png" id="logo" alt="" width="21" height="20" class="d-inline-block align-text-top">Checkout</a>
+              <a class="nav-link" href="Cart.html" id="checkout"><img src="./assets/images/Cart.png" id="logo" alt="" width="21" height="20" class="d-inline-block align-text-top">Checkout</a>
               <!--<input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
               <button class="btn btn-outline-secondary" type="submit">Search</button>-->
             </form>
           </div>
         </div>
-      </nav>
-    <div id = "totals">
-        Subtotal: 
-        Tax:
-        Deilvery fee:
-        Total due:
-        <button id = "checkout"> Checkout</button>
-    </div>
-    <div id = "items">
+    </nav>
+    <button type="button" id="refresh" class="btn btn-outline-success">Refresh</button>
+    <div class="bg-success p-3 cart-items" id="item1-cart">Item 1</div>
+    <div class="bg-success p-3 cart-items" id="item2-cart">Item 2</div>
+    <div class="bg-success p-3 cart-items" id="item3-cart">Item 3</div>
+    <div class="bg-success p-3 cart-items" id="item4-cart">Item 4</div>
+    <div class="bg-success p-3 cart-items" id="item5-cart">Item 5</div>
+    <div class="bg-success p-3 cart-items" id="item6-cart">Item 6</div>
+    <div class="bg-success p-3 cart-items" id="item7-cart">Item 7</div>
+    <div class="bg-success p-3 cart-items" id="item8-cart">Item 8</div>
 
+    <div class="container">
+        <div class="row justify-content-around">
+            <div class="col-md-7 overflow-auto border border-dark container">
+                <div class="row">
+                    <div class="col-2">
+                        <img src="assets/images/PumpkinLogo.png" alt="Image of item" width="80%" />
+                    </div>
+                    <div class="col-6">
+                        <h4>Name of Item</h4>
+                    </div>
+                    <div class="col-2">
+                        <p>quantity incremental</p>
+                    </div>
+                    <div class="col-2">
+                        <h4>[PRICE]</h4>
+                    </div>
+                </div>
+            </div>
+            <div class="gap-4 col-md-4 offset-md-1">
+                <table class="table table-borderless">
+                    <tbody>
+                        <tr>
+                            <td colspan="2" class="table-active"><strong>Subtotal</strong></td>
+                            <td id="subtotal">[price]</td>
+                        </tr>
+                        <tr>
+                            <td colspan="2" class="table-active">Delivery Fee</td>
+                            <td>[price]</td>
+                        </tr>
+                      <tr>
+                        <td colspan="2" class="table-active">Estimated Tax</td>
+                        <td>[price]</td>
+                      </tr>
+                    </tbody>
+                </table>
+                <hr>
+                <h2>TOTAL:</h2>
+                <button type="button" id="makeOrder" class="btn btn-outline-success">Make Order</button>
+            </div>
+        </div>
+        
     </div>
     <nav id="footer" class="navbar navbar-expand-lg navbar-light bg-light">
         <div class="container-fluid">
@@ -59,28 +110,23 @@
           <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav me-auto mb-2 mb-lg-0">
               <li class="nav-item">
-                <a class="nav-link active" aria-current="page" href="./index.html">Home</a>
+                <a class="nav-link active" aria-current="page" href="#">Home</a>
               </li>
               <li class="nav-item">
-                <a class="nav-link" href="./menu.html">Menu</a>
+                <a class="nav-link" href="#">Menu</a>
               </li>
               <li class="nav-item">
-                <a class="nav-link" href="./aboutus.html">About Us</a>
+                <a class="nav-link" href="#">About Us</a>
               </li>
             </ul>
             <form class="d-flex">
-              <a class="nav-link" href="./Cart.html" id="checkout">Checkout</a>
+              <a class="nav-link" href="#" id="checkout">Checkout</a>
               <!--<input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
               <button class="btn btn-outline-secondary" type="submit">Search</button>-->
             </form>
           </div>
         </div>
       </nav>
-        <script
-        src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
-        integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
-        crossorigin="anonymous"
-      ></script>
-        <script src="assets/js/index.js"></script>
+    <script src="assets/js/cart.js"></script>
 </body>
 </html>

@@ -104,6 +104,19 @@ const getMenuItems = (request, response) => {
     );
   };
 
+  const getOrderByID = (request, response) => {
+    const oid = parseInt(request.params.oid);
+    pool.query(
+      'SELECT * FROM it353project.orders WHERE order_id = $1',
+      [oid],
+      (error, results) => {
+        if(error) {
+          response.send({ present: false });
+        }
+        response.send({ present: true});
+      }
+    )
+  }
 
   const createOrder = (request, response) => {
     const { order_id, item_id, quant } = request.body;
@@ -169,6 +182,7 @@ const getMenuItems = (request, response) => {
 module.exports = {
     getMenuItems,
     getMenuItem,
+    getOrderByID,
     createMenuItem,
     updateMenuItem,
     deleteMenuItem,
