@@ -12,6 +12,7 @@
 
 .card{
     background-color: #EFBF38;
+    color: black !important;
 }
 
 #navigation{
@@ -26,4 +27,44 @@ body{
 
 #footer{
     background-color: #EFBF38 !important;
+}
+
+#roll{
+    height: 350px !important;
+}
+
+#bread{
+    height: 350px !important;
+}
+
+#cheesecake{
+    height: 350px !important;
+}
+
+#hero-button{
+    background-color: #EFBF38 !important;
+    margin-top: 0px;
+    border-color: #EFBF38 !important;
+    color: black;
+}
+
+@media only screen and (min-width: 580px) {
+#hero-title{
+    font-size: 50px !important;
+    background-color: #EFBF38 !important;
+    margin-bottom: 0px;
+}
+#hero-text{
+    font-size: 25px !important;
+    background-color: #EFBF38 !important;
+    margin-top: 0px;
+}
+#hero-button{
+    background-color: #EFBF38 !important;
+    margin-top: 0px;
+    border-color: #EFBF38 !important;
+}
+}
+
+@media only screen and (max-width: 580px){
 }
