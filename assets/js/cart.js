@@ -225,13 +225,14 @@ $(document).ready(function() {
 
     // on button click retrieve all data from session storage and send order to database
     $("#makeOrder").click(function(e) {
+        sessionStorage.removeItem("IsThisFirstTime_Log_From_LiveServer");
         e.preventDefault();
         alert('order placed');
         const orderIDPromise = createOrderID();
         orderIDPromise.then((json) => {
             // get and set all values for order creation in database
             var itemIDs = []
-            for(let i = 1; i < sessionStorage.length; i++) {
+            for(let i = 0; i < sessionStorage.length; i++) {
                 const key = sessionStorage.key(i);
                 itemIDs.push(key)
             }
@@ -242,6 +243,7 @@ $(document).ready(function() {
             quantities.forEach(quan => {
                 quantity = parseInt(quan.textContent)
                 quans.push(quantity)
+                console.log(order);
                 var order = {
                     order_id: json,
                     item_id: itemIDs[index].slice(-1),
