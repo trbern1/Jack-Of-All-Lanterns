@@ -51,6 +51,8 @@ addMenuItemButton.addEventListener('click', () => {
     .catch((error) => {
       console.log(error);
     });
+    clearMenuForm();
+    showMessage("Item was added successfully!")
 });
 
 //PUT
@@ -78,6 +80,8 @@ updateMenuItemButton.addEventListener('click', () => {
     .catch((error) => {
       console.log(error);
     });
+    clearMenuForm();
+    showMessage("Item was updated successfully!")
 });
 
 // DELETE
@@ -94,4 +98,6 @@ deleteMenuItemButton.addEventListener('click', () => {
     .catch((error) => {
       console.log(error);
     });
+    clearMenuForm();
+    showMessage("Item was deleted successfully!")
 });

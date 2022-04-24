@@ -1,6 +1,15 @@
-$(document).ready(function() {
-    // document.getElementById
-})
+function showMessage (m) {
+    const infoUI = document.getElementById('get-content-area');
+    infoUI.innerHTML = '';
+    infoUI.innerHTML = m;
+}
+
+function clearMenuForm () {
+    document.getElementById('menu-form-id').value = '';
+    document.getElementById('menu-form-name').value = '';
+    document.getElementById('menu-form-price').value = '';
+}
+
 function showDiv(id, elementValue) {
     // console.log(elementValue.value)
     const buttons = document.querySelectorAll(".btn-menu-crud");
