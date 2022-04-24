@@ -155,29 +155,7 @@ $(document).ready(function() {
         }    
     }
 
-    function setQuantity() {
-        // retrieve quantity from cart
-        var quantity = document.getElementById('quantity').textContent
-        // set quantity in session storage
-        sessionStorage.setItem('quantity', quantity)
-    }
-
-    function createOrder(orderID, itemID, quantity) {
-        const createOrderUrl = '/orders'
-
-        // test data
-        var order = {
-            order_id: orderID,
-            item_id: itemID,
-            quant: quantity
-        }
-        $.post(createOrderUrl, order, function(data, status) {
-            alert("Post")
-        }).fail(function() {
-            alert('error in post request')
-        })
-    }
-
+    
     
     const MAX = 100000
     async function createOrderID() {
@@ -189,12 +167,13 @@ $(document).ready(function() {
     
     async function checkOrderID(key) {
         try {
-            const response = await fetch(`http://127.0.0.1:3000/order/${key}`);
-            if(!response.ok) {
-                alert('key is not in database')
-            }
-            const json = await response.json();
-
+            if(key != 'r') {
+                const response = await fetch(`http://127.0.0.1:3000/order/${key}`);
+                if(!response.ok) {
+                    alert('key is not in database')
+                }
+                const json = await response.json();
+            }    
         } catch (error) {
             console.log('key is free')
         }
@@ -234,25 +213,55 @@ $(document).ready(function() {
                 estimatedTax = Math.round(estimatedTax * 100) / 100
                 total = subTotal + estimatedTax + 3.22
                 document.querySelector('#subtotal').innerHTML = `$${Math.round(subTotal * 100) / 100}`
-                document.querySelector('#total').innerHTML = `Total:   ${Math.round(total * 100) / 100}`
+                document.querySelector('#total').innerHTML = `Total:   $${Math.round(total * 100) / 100}`
                 document.querySelector('#estimatedTax').innerHTML = `$${estimatedTax}`
             }, 2000)
         } catch (error) {
             console.log('key is free')
         }
-        
-        // multiply each price by the corresponding quantity
-        // display total
     }
-    
+
     // on button click retrieve all data from session storage and send order to database
     $("#makeOrder").click(function(e) {
         e.preventDefault();
         alert('order placed');
         const orderIDPromise = createOrderID();
         orderIDPromise.then((json) => {
-            // do logic with creating order here
-            console.log('promise ended: ', json)
-        }) 
+            // get and set all values for order creation in database
+            var itemIDs = []
+            for(let i = 1; i < sessionStorage.length; i++) {
+                const key = sessionStorage.key(i);
+                itemIDs.push(key)
+            }
+            // get quantities and make a post request for each item after all values are set
+            var quantities = document.querySelectorAll('#quantity')
+            var quans= []
+            var index = 0;
+            quantities.forEach(quan => {
+                quantity = parseInt(quan.textContent)
+                quans.push(quantity)
+                var order = {
+                    order_id: json,
+                    item_id: itemIDs[index].slice(-1),
+                    quant: quantity
+                }
+                if(itemIDs[index].slice(-1) != 'r') {
+                    index++
+                    $.post(`http://127.0.0.1:3000/orders`, order, function(data, status) {
+                        console.log(`order placed:`)
+                        console.log(order)
+                    }).fail(function() {
+                        alert('error in post request')
+                    })
+                }
+            })
+        })
+        // 5 second timer to clear storage after order is placed
+        setTimeout(() => {
+            sessionStorage.clear()
+            document.querySelector('#subtotal').innerHTML = `$0`
+            document.querySelector('#total').innerHTML = `Total:   $0`
+            document.querySelector('#estimatedTax').innerHTML = `$0`
+        }, 5000)
     })
 })
