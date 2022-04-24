@@ -28,7 +28,7 @@ app.put('/items/:id', db.updateMenuItem);
 app.delete('/items/:id', db.deleteMenuItem);
 
 app.get('/orders', db.getOrders);
-app.get('/orders/:oid/:iid', db.getOrder);
+app.get('/orders/:oid', db.getOrder);
 app.get('/order/:oid', db.getOrderByID);
 app.post('/orders', db.createOrder);
 app.put('/orders/:oid/:iid', db.updateOrderItem);
