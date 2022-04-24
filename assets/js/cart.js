@@ -15,10 +15,8 @@ $(document).ready(function() {
             while(cart[0].firstChild) {
                 cart[0].removeChild(cart[0].firstChild)
             }
-            // console.log(itemquants);
             for (var i=1; i<itemquants.length+1; i++){
                 if (itemquants[i-1] != null){
-                    // console.log(itemidname);
                     createCartItem(i)
                 }
             }
@@ -59,10 +57,8 @@ $(document).ready(function() {
         var divName = document.createElement('div');
         divName.classList.add('col-5')
         var name = document.createElement('h4')
-        // get name from database
+        // name is set from separate call
         setItemValue(i, 2, name)
-        // console.log(`item name: ${itemName}`)
-        // name.innerHTML = itemName
         divName.append(name)
         row.append(divName)
 
@@ -147,13 +143,10 @@ $(document).ready(function() {
     function setItemValue(itemID, key, element) {
         try {
             $.get(`http://127.0.0.1:3000/items/${itemID}`, function(item) {
-                console.log(item[0])
                 if(key == 2) {
-                    console.log(item[0].name)
                     element.innerHTML = item[0].name
                 }
                 if(key == 3) {
-                    console.log(item[0].price)
                     element.innerHTML = item[0].price
                 }
             })
@@ -196,14 +189,12 @@ $(document).ready(function() {
     
     async function checkOrderID(key) {
         try {
-            console.log(key)
             const response = await fetch(`http://127.0.0.1:3000/order/${key}`);
             if(!response.ok) {
                 alert('key is not in database')
             }
             const json = await response.json();
-            console.log(json)
-            console.log(key);
+
         } catch (error) {
             console.log('key is free')
         }
@@ -226,10 +217,8 @@ $(document).ready(function() {
                 quans.push(quantity)
             })
             var quantityIndex = 0
-            console.log(quans)
             for (var i=1; i<itemquants.length+1; i++){
                 if (itemquants[i-1] != null){
-                    // console.log(itemidname);
                     // get all prices from database based on item ids
                     $.get(`http://127.0.0.1:3000/items/${i}`, function(item) {
                         subTotal += (parseFloat(item[0].price) * parseFloat(quans[quantityIndex]))
@@ -242,9 +231,10 @@ $(document).ready(function() {
                 }
             }
             setTimeout(() => {
+                estimatedTax = Math.round(estimatedTax * 100) / 100
                 total = subTotal + estimatedTax + 3.22
-                document.querySelector('#subtotal').innerHTML = `$${subTotal}`
-                document.querySelector('#total').innerHTML = `Total:   ${total}`
+                document.querySelector('#subtotal').innerHTML = `$${Math.round(subTotal * 100) / 100}`
+                document.querySelector('#total').innerHTML = `Total:   ${Math.round(total * 100) / 100}`
                 document.querySelector('#estimatedTax').innerHTML = `$${estimatedTax}`
             }, 2000)
         } catch (error) {
