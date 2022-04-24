@@ -24,7 +24,7 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 </head>
 <body>
-    <nav id=navigation class="navbar navbar-expand-lg navbar-light bg-light">
+    <nav id="navigation" class="navbar navbar-expand-lg navbar-light bg-light">
         <div class="container-fluid">
           <a class="navbar-brand" href="index.html"><img src="./assets/images/PumpkinLogo.png" id="logo" alt="" width="24" height="24" class="d-inline-block align-text-top">Jack of All Lanterns</a>
           <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -33,7 +33,7 @@
           <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav me-auto mb-2 mb-lg-0">
               <li class="nav-item">
-                <a class="nav-link active" aria-current="page" href="#">Home</a>
+                <a class="nav-link active" aria-current="page" href="index.html">Home</a>
               </li>
               <li class="nav-item">
                 <a class="nav-link" href="menu.html">Menu</a>
@@ -41,34 +41,34 @@
               <li class="nav-item">
                 <a class="nav-link" href="aboutus.html">About Us</a>
               </li>
+              <li class="nav-item">
+                <a class="nav-link" href="admin.html">Admin</a>
+              </li>
             </ul>
             <form class="d-flex">
               <a class="nav-link" href="Cart.html" id="checkout"><img src="./assets/images/Cart.png" id="logo" alt="" width="21" height="20" class="d-inline-block align-text-top">Checkout</a>
-              <!-- <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
-              <button class="btn btn-outline-secondary" type="submit">Search</button> -->
             </form>
           </div>
         </div>
     </nav>
     <button type="button" id="refresh" class="btn btn-outline-success">Refresh</button>
-    
     <div class="container">
         <div class="row justify-content-around">
             <div class="col-md-7 overflow-auto border border-dark container cart">
             </div>
-            <div class="gap-4 col-md-4 offset-md-1">
+            <div class="gap-4 col-md-4 offset-md-1 text-warning">
                 <table class="table table-borderless">
-                    <tbody>
+                    <tbody class="text-warning">
                         <tr>
-                            <td colspan="2" class="table-active"><strong>Subtotal</strong></td>
+                            <td colspan="2" class="table-active text-warning"><strong>Subtotal</strong></td>
                             <td id="subtotal">[price]</td>
                         </tr>
                         <tr>
-                            <td colspan="2" class="table-active">Delivery Fee</td>
+                            <td colspan="2" class="table-active text-warning"><strong>Delivery Fee</strong></td>
                             <td>$3.22</td>
                         </tr>
                       <tr>
-                        <td colspan="2" class="table-active">Estimated Tax</td>
+                        <td colspan="2" class="table-active text-warning"><strong>Estimated Tax</strong></td>
                         <td id="estimatedTax">[price]</td>
                       </tr>
                     </tbody>
@@ -82,25 +82,26 @@
     </div>
     <nav id="footer" class="navbar navbar-expand-lg navbar-light bg-light">
         <div class="container-fluid">
-          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent2" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
           </button>
-          <div class="collapse navbar-collapse" id="navbarSupportedContent">
+          <div class="collapse navbar-collapse" id="navbarSupportedContent2">
             <ul class="navbar-nav me-auto mb-2 mb-lg-0">
               <li class="nav-item">
-                <a class="nav-link active" aria-current="page" href="#">Home</a>
+                <a class="nav-link active" aria-current="page" href="index.html">Home</a>
               </li>
               <li class="nav-item">
-                <a class="nav-link" href="#">Menu</a>
+                <a class="nav-link" href="menu.html">Menu</a>
               </li>
               <li class="nav-item">
-                <a class="nav-link" href="#">About Us</a>
+                <a class="nav-link" href="aboutus.html">About Us</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="admin.html">Admin</a>
               </li>
             </ul>
             <form class="d-flex">
-              <a class="nav-link" href="#" id="checkout">Checkout</a>
-              <!--<input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
-              <button class="btn btn-outline-secondary" type="submit">Search</button>-->
+              <a class="nav-link" href="Cart.html" id="checkout">Checkout</a>
             </form>
           </div>
         </div>
