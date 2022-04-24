@@ -55,8 +55,10 @@ body{
     color: black;
 }
 
-<<<<<<< HEAD
-=======
+#abouttext{
+    color: #EFBF38;
+}
+
 .cart-items {
     display: none;
 }
@@ -71,15 +73,11 @@ body{
     object-fit: cover;
 }
 
->>>>>>> 2c64409fc2992c9b10797bc0634f115a3da5e995
-@media only screen and (min-width: 580px) {
 #hero-title{
-    font-size: 50px !important;
     background-color: #EFBF38 !important;
     margin-bottom: 0px;
 }
 #hero-text{
-    font-size: 25px !important;
     background-color: #EFBF38 !important;
     margin-top: 0px;
 }
@@ -88,7 +86,21 @@ body{
     margin-top: 0px;
     border-color: #EFBF38 !important;
 }
-}
 
 @media only screen and (max-width: 580px){
+#menuimg{
+    height: 250px;
+}
+}
+
+@media only screen and (min-width: 1000px){
+#abouttext{
+    font-size: 25px;
+}
+#hero-text{
+    font-size: 25px !important;
+}
+#hero-title{
+    font-size: 50px !important;
+}
 }
