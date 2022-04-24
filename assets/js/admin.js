@@ -40,4 +40,40 @@ function showDiv(id, elementValue) {
             e.style.display = "block";
         })
     }
+    else if (elementValue.value == "menu-opt-5"){
+        const elements = document.querySelectorAll(".show-menu-5");
+        elements.forEach(e => {
+            e.style.display = "block";
+        })
+    }
+    else if (elementValue.value == "menu-opt-6"){
+        const elements = document.querySelectorAll(".show-menu-6");
+        elements.forEach(e => {
+            e.style.display = "block";
+        })
+    }
+    else if (elementValue.value == "menu-opt-7"){
+        const elements = document.querySelectorAll(".show-menu-7");
+        elements.forEach(e => {
+            e.style.display = "block";
+        })
+    }
+    else if (elementValue.value == "menu-opt-8"){
+        const elements = document.querySelectorAll(".show-menu-8");
+        elements.forEach(e => {
+            e.style.display = "block";
+        })
+    }
+    else if (elementValue.value == "menu-opt-9"){
+        const elements = document.querySelectorAll(".show-menu-9");
+        elements.forEach(e => {
+            e.style.display = "block";
+        })
+    }
+    else if (elementValue.value == "menu-opt-10"){
+        const elements = document.querySelectorAll(".show-menu-10");
+        elements.forEach(e => {
+            e.style.display = "block";
+        })
+    }
  }
