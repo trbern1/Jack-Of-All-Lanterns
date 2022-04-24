@@ -91,10 +91,9 @@ const getMenuItems = (request, response) => {
 
   const getOrder = (request, response) => {
     const oid = parseInt(request.params.oid);
-    const iid = parseInt(request.params.iid);
     pool.query(
-      'SELECT * FROM it353project.orders WHERE order_id= $1 AND item_id = $2',
-      [oid, iid],
+      'SELECT * FROM it353project.orders WHERE order_id= $1',
+      [oid],
       (error, results) => {
         if (error) {
           throw error;

@@ -47,7 +47,7 @@
 
       <div class="flex-container">
         <div class="row">
-          <div class="col-sm-12 col-md-6 col-lg-4 bg-warning p-3">
+          <!-- <div class="col-sm-12 col-md-6 col-lg-4 bg-warning p-3">
               <h5>Choose option:</h5>
               <div class="custom-control custom-radio">
                 <input type="radio" id="customRadio1" name="customRadio" class="custom-control-input">
@@ -57,41 +57,82 @@
                 <input type="radio" id="customRadio2" name="customRadio" class="custom-control-input">
                 <label class="custom-control-label" for="customRadio2">Orders</label>
               </div>
-          </div>
-          <div class="col-sm-12 col-md-6 col-lg-4 bg-success p-3" id="edit-menu-box">
+          </div> -->
+          <div class="col-sm-12 col-md-6 bg-success p-3" id="edit-menu-box">
             <h5>Choose option:</h5>
             <div class="flex-container">
-                <div class="d-flex flex-column align-content-center flex-wrap gap-3">
-                  <div id="msg" class="bg-warning p-2 mb-1">
-                    <select onchange="showDiv('hidden_div', this)" class="custom-select mr-sm-2" id="inlineFormCustomSelect">
+                <div class="d-flex flex-column flex-wrap gap-3">
+                  <div id="msg" class="p-2 mb-1">
+                    <select onchange="showDiv('hidden_div', this)" class="form-select mr-sm-2" id="inlineFormCustomSelect">
                       <option selected value="menu-select">Select choice...</option>
-                      <option value="menu-get-all">Get Menu Items</option>
-                      <option value="menu-create">Add Menu Item</option>
-                      <option value="menu-update">Update Menu Item</option>
-                      <option value="menu-delete">Delete Menu Item</option>
+                      <option value="menu-opt-1">Get Menu Items</option>
+                      <option value="menu-opt-2">Add Menu Item</option>
+                      <option value="menu-opt-3">Update Menu Item</option>
+                      <option value="menu-opt-4">Delete Menu Item</option>
+                      <option value="menu-opt-5">Get All Orders</option>
+                      <option value="menu-opt-6">Get Order By ID</option>
+                      <option value="menu-opt-7">Add Item to an Order</option>
+                      <option value="menu-opt-8">Update Order Item</option>
+                      <option value="menu-opt-9">Delete Order Item</option>
+                      <option value="menu-opt-10">Delete Entire Order</option>
                     </select>
                   </div>
-                  <div class="d-flex p-2 flex-column gap-3">
-                    <div class="row text-center gap-3 gap-md-1">
-                        <p class="col-sm-12 col-lg-3 m-auto">Test</p>
-                        <p class="col-sm-12 col-lg-3 m-auto">Test</p>
-                        <p class="col-sm-12 col-lg-3 m-auto">Test</p>
+                  <div class="d-flex flex-column">
+                    <div class="row">
+                        <div class="col-sm-12 m-auto">
+                            <div class="mb-1 btn-menu-crud show-menu-2 show-menu-3 show-menu-4">
+                                <label for="menu-form" class="form-label">Item ID</label>
+                                <input type="menu-form" class="menu-form-control" id="menu-form-id" aria-describedby="basic-addon3">
+                            </div>
+                        </div>
+                        <div class="col-sm-12 m-auto">
+                            <div class="mb-1 btn-menu-crud show-menu-2 show-menu-3">
+                                <label for="menu-form" class="form-label">Item Name</label>
+                                <input type="menu-form" class="menu-form-control" id="menu-form-name" aria-describedby="basic-addon3">
+                            </div>
+                        </div>
+                        <div class="col-sm-12 m-auto">
+                            <div class="mb-1 btn-menu-crud show-menu-2 show-menu-3">
+                                <label for="menu-form" class="form-label">Item Price</label>
+                                <input type="menu-form" class="menu-form-control" id="menu-form-price" aria-describedby="basic-addon3">
+                            </div>
+                        </div>
+                        <div class="col-sm-12 m-auto">
+                            <div class="mb-1 btn-menu-crud show-menu-6 show-menu-7 show-menu-8 show-menu-9 show-menu-10">
+                                <label for="order-form" class="form-label">Order ID</label>
+                                <input type="order-form" class="order-form-control" id="order-form-oid" aria-describedby="basic-addon3">
+                            </div>
+                        </div>
+                        <div class="col-sm-12 m-auto">
+                            <div class="mb-1 btn-menu-crud show-menu-7 show-menu-8 show-menu-9">
+                                <label for="order-form" class="form-label">Item ID</label>
+                                <input type="order-form" class="order-form-control" id="order-form-iid" aria-describedby="basic-addon3">
+                            </div>
+                        </div>
+                        <div class="col-sm-12 m-auto">
+                            <div class="mb-1 btn-menu-crud show-menu-7 show-menu-8">
+                                <label for="order-form" class="form-label">Quantity</label>
+                                <input type="order-form" class="order-form-control" id="order-form-quant" aria-describedby="basic-addon3">
+                            </div>
+                        </div>
                     </div>
-                    <div id="o1" class="bg-warning hide o1-show">1</div>
-                    <div id="o2" class="bg-warning hide o1-show">2</div>
-                    <div id="o3" class="bg-warning hide o2-show">3</div>
-                    <div id="o4" class="bg-warning hide o2-show">4</div>
                   </div>
-                  <div class="p-2 d-flex flex-column">
-                    <button type="button" class="btn btn-warning btn-menu-crud show-1" id="btn-menu-get">Get Items</button>
-                    <button type="button" class="btn btn-warning btn-menu-crud show-2" id="btn-menu-add">Add Item</button>
-                    <button type="button" class="btn btn-warning btn-menu-crud show-3" id="btn-menu-upd">Update Item</button>
-                    <button type="button" class="btn btn-warning btn-menu-crud show-3" id="btn-menu-del">Delete Item</button>
+                  <div class="p-2 d-flex flex-column flex-grow">
+                    <button type="button" class="btn btn-warning btn-menu-crud show-menu-1" id="btn-menu-get">Get Items</button>
+                    <button type="button" class="btn btn-warning btn-menu-crud show-menu-2" id="btn-menu-add">Add Item</button>
+                    <button type="button" class="btn btn-warning btn-menu-crud show-menu-3" id="btn-menu-upd">Update Item</button>
+                    <button type="button" class="btn btn-warning btn-menu-crud show-menu-4" id="btn-menu-del">Delete Item</button>
+                    <button type="button" class="btn btn-warning btn-menu-crud show-menu-5" id="btn-ord-get-all">Get All Orders</button>
+                    <button type="button" class="btn btn-warning btn-menu-crud show-menu-6" id="btn-ord-get-one">Get Order</button>
+                    <button type="button" class="btn btn-warning btn-menu-crud show-menu-7" id="btn-ord-add">Add Item To Order</button>
+                    <button type="button" class="btn btn-warning btn-menu-crud show-menu-8" id="btn-ord-upd">Update Order Item</button>
+                    <button type="button" class="btn btn-warning btn-menu-crud show-menu-9" id="btn-ord-del-one">Delete Order Item</button>
+                    <button type="button" class="btn btn-warning btn-menu-crud show-menu-10" id="btn-ord-del-all">Delete Order</button>
                   </div>
                 </div>
               </div>
           </div>
-          <div class="col-sm-12 col-lg-4 bg-warning p-3">
+          <div class="col-sm-12 col-md-6 bg-warning p-3">
                 <h5>Result:</h5>
                 <p id="get-content-area"></p>
           </div>
@@ -105,6 +146,7 @@
   ></script>
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
     <script src="assets/js/admin.js"></script>
-    <script src="assets/js/admin-api.js"></script>
+    <script src="assets/js/admin-menu-api.js"></script>
+    <script src="assets/js/admin-order-api.js"></script>
 </body>
 </html>

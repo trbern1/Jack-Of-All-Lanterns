@@ -44,39 +44,17 @@
             </ul>
             <form class="d-flex">
               <a class="nav-link" href="Cart.html" id="checkout"><img src="./assets/images/Cart.png" id="logo" alt="" width="21" height="20" class="d-inline-block align-text-top">Checkout</a>
-              <!--<input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
-              <button class="btn btn-outline-secondary" type="submit">Search</button>-->
+              <!-- <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+              <button class="btn btn-outline-secondary" type="submit">Search</button> -->
             </form>
           </div>
         </div>
     </nav>
     <button type="button" id="refresh" class="btn btn-outline-success">Refresh</button>
-    <div class="bg-success p-3 cart-items" id="item1-cart">Item 1</div>
-    <div class="bg-success p-3 cart-items" id="item2-cart">Item 2</div>
-    <div class="bg-success p-3 cart-items" id="item3-cart">Item 3</div>
-    <div class="bg-success p-3 cart-items" id="item4-cart">Item 4</div>
-    <div class="bg-success p-3 cart-items" id="item5-cart">Item 5</div>
-    <div class="bg-success p-3 cart-items" id="item6-cart">Item 6</div>
-    <div class="bg-success p-3 cart-items" id="item7-cart">Item 7</div>
-    <div class="bg-success p-3 cart-items" id="item8-cart">Item 8</div>
-
+    
     <div class="container">
         <div class="row justify-content-around">
-            <div class="col-md-7 overflow-auto border border-dark container">
-                <div class="row">
-                    <div class="col-2">
-                        <img src="assets/images/PumpkinLogo.png" alt="Image of item" width="80%" />
-                    </div>
-                    <div class="col-6">
-                        <h4>Name of Item</h4>
-                    </div>
-                    <div class="col-2">
-                        <p>quantity incremental</p>
-                    </div>
-                    <div class="col-2">
-                        <h4>[PRICE]</h4>
-                    </div>
-                </div>
+            <div class="col-md-7 overflow-auto border border-dark container cart">
             </div>
             <div class="gap-4 col-md-4 offset-md-1">
                 <table class="table table-borderless">
@@ -87,16 +65,16 @@
                         </tr>
                         <tr>
                             <td colspan="2" class="table-active">Delivery Fee</td>
-                            <td>[price]</td>
+                            <td>$3.22</td>
                         </tr>
                       <tr>
                         <td colspan="2" class="table-active">Estimated Tax</td>
-                        <td>[price]</td>
+                        <td id="estimatedTax">[price]</td>
                       </tr>
                     </tbody>
                 </table>
                 <hr>
-                <h2>TOTAL:</h2>
+                <h2 id="total">TOTAL:</h2>
                 <button type="button" id="makeOrder" class="btn btn-outline-success">Make Order</button>
             </div>
         </div>
@@ -127,6 +105,12 @@
           </div>
         </div>
       </nav>
+      <script
+    src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
+    crossorigin="anonymous"
+  ></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
     <script src="assets/js/cart.js"></script>
 </body>
 </html>
