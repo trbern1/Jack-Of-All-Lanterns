@@ -6,34 +6,36 @@ $(document).ready(function() {
     checkoutButton.addEventListener('click', () => {
         try {
             let itemquants = [sessionStorage.getItem("item1"),
-                sessionStorage.getItem("item2"),sessionStorage.getItem("item3"),
-                sessionStorage.getItem("item4"),sessionStorage.getItem("item5"),
-                sessionStorage.getItem("item6"),sessionStorage.getItem("item7"),
-                sessionStorage.getItem("item8")];
+            sessionStorage.getItem("item2"),sessionStorage.getItem("item3"),
+            sessionStorage.getItem("item4"),sessionStorage.getItem("item5"),
+            sessionStorage.getItem("item6"),sessionStorage.getItem("item7"),
+            sessionStorage.getItem("item8")];
+            // remove all items from cart first
             const cart = document.getElementsByClassName('cart');
+            while(cart[0].firstChild) {
+                cart[0].removeChild(cart[0].firstChild)
+            }
             // console.log(itemquants);
             for (var i=1; i<itemquants.length+1; i++){
                 if (itemquants[i-1] != null){
-                    // let itemidname = "item" + i + "-cart";
                     // console.log(itemidname);
-                    console.log(i)
                     createCartItem(i)
-                    // document.getElementById(itemidname).style.display= "inline";
                 }
             }
-
+            var incrementTags = document.querySelectorAll(".incremental")
+            var decrementTags = document.querySelectorAll(".decremental")
+            startListeners(incrementTags, decrementTags)
         }catch (error) {
             console.log(error);
         }
     });
-
+    
     function createCartItem(i) {
         // add all links of images to items then based on the item value, grab the correct image
         // links must be set up to the Cart.html file not this one.
-        const imageOfItems = ['assets/images/', 'assets/images/', 'assets/images/', 'assets/images/']
+        const imageOfItems = ['./assets/images/Moist-Pumpkin-Scones.jpg', './assets/images/Pumpkin-Cake-Roll.jpg', './assets/images/Pumpkin-Bread.jpg', './assets/images/Pumpkin-Cheesecake.jpg', './assets/images/Pumpkin-Chocolate-Chip-Cookies.jpg', './assets/images/pumpkin-muffins.jpg', './assets/images/Pumpkin-Spice-Bagels.jpg', './assets/images/Traditional-Pumpkin-Pie_.jpg']
 
         var cart = document.getElementsByClassName("cart")
-        console.log(cart)
 
         // create each item row
         var row = document.createElement('div')
@@ -45,7 +47,8 @@ $(document).ready(function() {
         var divImage = document.createElement('div');
         divImage.classList.add('col-2')
         var image = document.createElement('img');
-        image.src = 'assets/images/PumpkinLogo.png'
+        // list of image values and item id sets the correct one
+        image.src = imageOfItems[i-1]
         image.alt = 'image of item';
         image.width = "50"
         image.height = "50"
@@ -56,7 +59,10 @@ $(document).ready(function() {
         var divName = document.createElement('div');
         divName.classList.add('col-5')
         var name = document.createElement('h4')
-        name.innerHTML = "Name of Item"
+        // get name from database
+        setItemValue(i, 2, name)
+        // console.log(`item name: ${itemName}`)
+        // name.innerHTML = itemName
         divName.append(name)
         row.append(divName)
 
@@ -101,27 +107,76 @@ $(document).ready(function() {
         var divPrice = document.createElement('div');
         divPrice.classList.add("col-2")
         var price = document.createElement('h4')
-        price.innerHTML = `[PRICE]`
+        price.classList.add('price')
+        // get price values from database with get call
+        setItemValue(i, 3, price)
         divPrice.append(price)
         row.append(divPrice)
-
+        
         cart[0].prepend(row)
+
+        // calculate and set totals
+        calcTotal()
+    }
+    
+    function incrementQuantity(increase) {
+        var quantityText = increase.previousSibling.firstChild
+        quantityText.textContent = parseInt(quantityText.textContent)+1
+    }
+
+    function decrementQuantity(decrease) {
+        var quantityText = decrease.nextSibling.firstChild
+        quantityText.textContent = parseInt(quantityText.textContent)-1
+    }
+
+    function startListeners(increments, decrements) {
+        increments.forEach(incBtn => {
+            incBtn.addEventListener('click', event => {
+                incrementQuantity(incBtn)
+                calcTotal()
+            })
+        })
+        decrements.forEach(decBtn => {
+            decBtn.addEventListener('click', event => {
+                decrementQuantity(decBtn)
+                calcTotal()
+            })
+        })
+    }
+
+    function setItemValue(itemID, key, element) {
+        try {
+            $.get(`http://127.0.0.1:3000/items/${itemID}`, function(item) {
+                console.log(item[0])
+                if(key == 2) {
+                    console.log(item[0].name)
+                    element.innerHTML = item[0].name
+                }
+                if(key == 3) {
+                    console.log(item[0].price)
+                    element.innerHTML = item[0].price
+                }
+            })
+        } catch (error) {
+            console.log('key is free')
+        }    
     }
 
     function setQuantity() {
         // retrieve quantity from cart
-        var quantity = 1;
+        var quantity = document.getElementById('quantity').textContent
         // set quantity in session storage
         sessionStorage.setItem('quantity', quantity)
     }
 
-    function createOrder() {
+    function createOrder(orderID, itemID, quantity) {
         const createOrderUrl = '/orders'
+
         // test data
         var order = {
-            order_id: sessionStorage.getItem('orderID'),
-            item_id: sessionStorage.getItem('itemID'),
-            quant: sessionStorage.getItem('quantity')
+            order_id: orderID,
+            item_id: itemID,
+            quant: quantity
         }
         $.post(createOrderUrl, order, function(data, status) {
             alert("Post")
@@ -153,12 +208,61 @@ $(document).ready(function() {
             console.log('key is free')
         }
     }
+
+    function calcTotal() {
+        try {
+            var total = 0
+            var subTotal = 0
+            var estimatedTax = 0
+            let itemquants = [sessionStorage.getItem("item1"),
+            sessionStorage.getItem("item2"),sessionStorage.getItem("item3"),
+            sessionStorage.getItem("item4"),sessionStorage.getItem("item5"),
+            sessionStorage.getItem("item6"),sessionStorage.getItem("item7"),
+            sessionStorage.getItem("item8")];
+            var quantities = document.querySelectorAll('#quantity')
+            var quans = []
+            quantities.forEach(quan => {
+                quantity = parseInt(quan.textContent)
+                quans.push(quantity)
+            })
+            var quantityIndex = 0
+            console.log(quans)
+            for (var i=1; i<itemquants.length+1; i++){
+                if (itemquants[i-1] != null){
+                    // console.log(itemidname);
+                    // get all prices from database based on item ids
+                    $.get(`http://127.0.0.1:3000/items/${i}`, function(item) {
+                        subTotal += (parseFloat(item[0].price) * parseFloat(quans[quantityIndex]))
+                        quantityIndex++
+                    }).done(function() {
+                        estimatedTax += subTotal*0.0625
+                    })
+                    var quantity = document.getElementById('quantity').textContent
+                    
+                }
+            }
+            setTimeout(() => {
+                total = subTotal + estimatedTax + 3.22
+                document.querySelector('#subtotal').innerHTML = `$${subTotal}`
+                document.querySelector('#total').innerHTML = `Total:   ${total}`
+                document.querySelector('#estimatedTax').innerHTML = `$${estimatedTax}`
+            }, 2000)
+        } catch (error) {
+            console.log('key is free')
+        }
+        
+        // multiply each price by the corresponding quantity
+        // display total
+    }
     
-    // on button click retrieve all data from session storage, clear it, send order to database
+    // on button click retrieve all data from session storage and send order to database
     $("#makeOrder").click(function(e) {
         e.preventDefault();
         alert('order placed');
         const orderIDPromise = createOrderID();
-        orderIDPromise.then((json) => console.log('promise ended: ', json))
+        orderIDPromise.then((json) => {
+            // do logic with creating order here
+            console.log('promise ended: ', json)
+        }) 
     })
 })
