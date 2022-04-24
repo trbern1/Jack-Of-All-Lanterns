@@ -28,6 +28,9 @@ $(document).ready(function() {
     });
 
     function createCartItem(i) {
+        // add all links of images to items then based on the item value, grab the correct image
+        // links must be set up to the Cart.html file not this one.
+        const imageOfItems = ['assets/images/', 'assets/images/', 'assets/images/', 'assets/images/']
 
         var cart = document.getElementsByClassName("cart")
         console.log(cart)
