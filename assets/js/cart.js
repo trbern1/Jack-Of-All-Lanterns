@@ -57,6 +57,7 @@ $(document).ready(function() {
         var divName = document.createElement('div');
         divName.classList.add('col-5')
         var name = document.createElement('h4')
+        name.classList.add('text-warning')
         // name is set from separate call
         setItemValue(i, 2, name)
         divName.append(name)
@@ -104,6 +105,7 @@ $(document).ready(function() {
         divPrice.classList.add("col-2")
         var price = document.createElement('h4')
         price.classList.add('price')
+        price.classList.add('text-warning')
         // get price values from database with get call
         setItemValue(i, 3, price)
         divPrice.append(price)
