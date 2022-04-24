@@ -47,7 +47,7 @@
 
       <div class="flex-container">
         <div class="row">
-          <div class="col-sm-12 col-md-6 col-lg-4 bg-warning p-3">
+          <!-- <div class="col-sm-12 col-md-6 col-lg-4 bg-warning p-3">
               <h5>Choose option:</h5>
               <div class="custom-control custom-radio">
                 <input type="radio" id="customRadio1" name="customRadio" class="custom-control-input">
@@ -57,18 +57,24 @@
                 <input type="radio" id="customRadio2" name="customRadio" class="custom-control-input">
                 <label class="custom-control-label" for="customRadio2">Orders</label>
               </div>
-          </div>
-          <div class="col-sm-12 col-md-6 col-lg-4 bg-success p-3" id="edit-menu-box">
+          </div> -->
+          <div class="col-sm-12 col-md-6 bg-success p-3" id="edit-menu-box">
             <h5>Choose option:</h5>
             <div class="flex-container">
                 <div class="d-flex flex-column flex-wrap gap-3">
-                  <div id="msg" class="bg-warning p-2 mb-1">
-                    <select onchange="showDiv('hidden_div', this)" class="custom-select mr-sm-2" id="inlineFormCustomSelect">
+                  <div id="msg" class="p-2 mb-1">
+                    <select onchange="showDiv('hidden_div', this)" class="form-select mr-sm-2" id="inlineFormCustomSelect">
                       <option selected value="menu-select">Select choice...</option>
                       <option value="menu-opt-1">Get Menu Items</option>
                       <option value="menu-opt-2">Add Menu Item</option>
                       <option value="menu-opt-3">Update Menu Item</option>
                       <option value="menu-opt-4">Delete Menu Item</option>
+                      <option value="menu-opt-5">Get All Orders</option>
+                      <option value="menu-opt-6">Get Order By ID</option>
+                      <option value="menu-opt-7">Add Item to an Order</option>
+                      <option value="menu-opt-8">Update Order Item</option>
+                      <option value="menu-opt-9">Delete Order Item</option>
+                      <option value="menu-opt-10">Delete Entire Order</option>
                     </select>
                   </div>
                   <div class="d-flex flex-column">
@@ -102,7 +108,7 @@
                 </div>
               </div>
           </div>
-          <div class="col-sm-12 col-lg-4 bg-warning p-3">
+          <div class="col-sm-12 col-md-6 bg-warning p-3">
                 <h5>Result:</h5>
                 <p id="get-content-area"></p>
           </div>
