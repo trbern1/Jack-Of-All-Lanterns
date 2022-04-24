@@ -8,6 +8,9 @@ function clearMenuForm () {
     document.getElementById('menu-form-id').value = '';
     document.getElementById('menu-form-name').value = '';
     document.getElementById('menu-form-price').value = '';
+    document.getElementById('order-form-oid').value = '';
+    document.getElementById('order-form-iid').value = '';
+    document.getElementById('order-form-quant').value = '';
 }
 
 function showDiv(id, elementValue) {
