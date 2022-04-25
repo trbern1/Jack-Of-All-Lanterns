@@ -59,8 +59,8 @@ body{
     color: #EFBF38;
 }
 
-#our-yellow {
-    color: #EFBF38;
+.our-yellow {
+    background-color: #EFBF38;
 }
 
 .cart-items {
